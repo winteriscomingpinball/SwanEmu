@@ -4,7 +4,7 @@
 #if defined(BITTBOY)
 
 #define SOUND_OUTPUT_FREQUENCY 5512
-#define SOUND_SAMPLES_SIZE 256
+#define SOUND_SAMPLES_SIZE 1024
 
 
 #elif defined(RS97)
