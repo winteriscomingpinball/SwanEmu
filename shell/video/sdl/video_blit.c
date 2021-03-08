@@ -52,7 +52,7 @@ void Init_Video()
 	
 	SDL_ShowCursor(0);
 	
-	sdl_screen = SDL_SetVideoMode(HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 16, SDL_HWSURFACE);
+	sdl_screen = SDL_SetVideoMode(HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 16, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
 	
 	backbuffer = SDL_CreateRGBSurface(SDL_SWSURFACE, HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 16, 0,0,0,0);
 	
@@ -68,7 +68,7 @@ void Set_Video_Menu()
 	if (sdl_screen->w != HOST_WIDTH_RESOLUTION)
 	{
 		memcpy(wswan_vs->pixels, sdl_screen->pixels, (INTERNAL_WSWAN_WIDTH * INTERNAL_WSWAN_HEIGHT)*2);
-		sdl_screen = SDL_SetVideoMode(HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 16, SDL_HWSURFACE);
+		sdl_screen = SDL_SetVideoMode(HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 16, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAM);
 	}
 }
 
@@ -80,13 +80,13 @@ void Set_Video_InGame()
 		#ifdef SUPPORT_NATIVE_RESOLUTION
         case 0:
 			/* For drawing to Wonderswan screen */
-			if (sdl_screen->w != INTERNAL_WSWAN_WIDTH) sdl_screen = SDL_SetVideoMode(224, 144, 16, SDL_HWSURFACE);
+			if (sdl_screen->w != INTERNAL_WSWAN_WIDTH) sdl_screen = SDL_SetVideoMode(224, 144, 16, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAM);
 			Draw_to_Virtual_Screen = sdl_screen->pixels;
 			width_of_surface = sdl_screen->w;
         break;
         #endif
         default:
-			if (sdl_screen->w != HOST_WIDTH_RESOLUTION) sdl_screen = SDL_SetVideoMode(HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 16, SDL_HWSURFACE);
+			if (sdl_screen->w != HOST_WIDTH_RESOLUTION) sdl_screen = SDL_SetVideoMode(HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 16, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAM);
 			Draw_to_Virtual_Screen = wswan_vs->pixels;
 			width_of_surface = INTERNAL_WSWAN_WIDTH;
         break;
