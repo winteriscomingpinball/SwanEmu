@@ -3,8 +3,8 @@
 
 #include <SDL/SDL.h>
 
-#define HOST_WIDTH_RESOLUTION 320
-#define HOST_HEIGHT_RESOLUTION 200
+#define HOST_WIDTH_RESOLUTION 224
+#define HOST_HEIGHT_RESOLUTION 144
 
 #define INTERNAL_WSWAN_WIDTH 224
 #define INTERNAL_WSWAN_HEIGHT 144
@@ -26,3 +26,4 @@ extern void Update_Video_Ingame();
 extern void Set_Video_Menu_Quit();
 
 #endif
+c
