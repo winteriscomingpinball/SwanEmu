@@ -52,7 +52,7 @@ void Init_Video()
 	
 	SDL_ShowCursor(0);
 	
-	sdl_screen = SDL_SetVideoMode(HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 16, SDL_SWSURFACE);
+	sdl_screen = SDL_SetVideoMode(240, 180, 16, SDL_SWSURFACE);
 	
 	backbuffer = SDL_CreateRGBSurface(SDL_SWSURFACE, HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 16, 0,0,0,0);
 	
@@ -68,7 +68,7 @@ void Set_Video_Menu()
 	if (sdl_screen->w != HOST_WIDTH_RESOLUTION)
 	{
 		memcpy(wswan_vs->pixels, sdl_screen->pixels, (INTERNAL_WSWAN_WIDTH * INTERNAL_WSWAN_HEIGHT)*2);
-		sdl_screen = SDL_SetVideoMode(HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 16, SDL_SWSURFACE);
+		sdl_screen = SDL_SetVideoMode(240, 180, 16, SDL_SWSURFACE);
 	}
 }
 
@@ -86,7 +86,7 @@ void Set_Video_InGame()
         break;
         #endif
         default:
-			if (sdl_screen->w != HOST_WIDTH_RESOLUTION) sdl_screen = SDL_SetVideoMode(HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 16, SDL_SWSURFACE);
+			if (sdl_screen->w != HOST_WIDTH_RESOLUTION) sdl_screen = SDL_SetVideoMode(240, 180, 16, SDL_SWSURFACE);
 			Draw_to_Virtual_Screen = wswan_vs->pixels;
 			width_of_surface = INTERNAL_WSWAN_WIDTH;
         break;
