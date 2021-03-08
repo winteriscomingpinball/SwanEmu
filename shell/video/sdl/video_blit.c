@@ -39,6 +39,7 @@
 #include "scaler.h"
 #include "config.h"
 
+
 extern uint32_t wsVMode;
 
 SDL_Surface *sdl_screen, *backbuffer, *wswan_vs, *wswan_vs_rot;
