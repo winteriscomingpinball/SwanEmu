@@ -26,4 +26,3 @@ extern void Update_Video_Ingame();
 extern void Set_Video_Menu_Quit();
 
 #endif
-c
