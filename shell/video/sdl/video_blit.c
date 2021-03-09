@@ -169,7 +169,7 @@ void Update_Video_Ingame()
 			
 			pitch = 320;
 			src = (uint16_t* restrict)source_graph;
-			dst = (uint16_t* restrict)sdl_screen->pixels;
+			dst = (uint16_t* restrict)sdl_screen->pixels-(320*2 - 20);
 			//dst = (uint16_t* restrict)sdl_screen->pixels
 				//+ ((320 - internal_width) / 4) * sizeof(uint16_t)
 				//+ ((180 - internal_height) / 2) * pitch;
