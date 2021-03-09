@@ -108,7 +108,7 @@ static void config_load()
 		option.config_buttons[1][11] = 0;
 		
 		/* Set default to keep aspect */
-		option.fullscreen = 0;
+		option.fullscreen = 1;
 	}
 }
 
