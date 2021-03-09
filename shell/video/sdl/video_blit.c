@@ -78,14 +78,14 @@ void Set_Video_InGame()
 	switch(option.fullscreen) 
 	{
 		// Native
-		#ifdef SUPPORT_NATIVE_RESOLUTION
+		//#ifdef SUPPORT_NATIVE_RESOLUTION
         case 0:
 			/* For drawing to Wonderswan screen */
 			if (sdl_screen->w != INTERNAL_WSWAN_WIDTH) sdl_screen = SDL_SetVideoMode(224, 144, 16, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
 			Draw_to_Virtual_Screen = sdl_screen->pixels;
 			width_of_surface = sdl_screen->w;
         break;
-        #endif
+        //#endif
         default:
 			if (sdl_screen->w != HOST_WIDTH_RESOLUTION) sdl_screen = SDL_SetVideoMode(HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 16, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
 			Draw_to_Virtual_Screen = wswan_vs->pixels;
