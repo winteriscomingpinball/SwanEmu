@@ -167,10 +167,10 @@ void Update_Video_Ingame()
 		    //bitmap_scale(0, 0, internal_width, internal_height, 240, 180, internal_width, 0, (uint16_t* restrict)source_graph, (uint16_t* restrict)sdl_screen->pixels);
 		    
 			
-			pitch = 240;
+			pitch = 320;
 			src = (uint16_t* restrict)source_graph;
 			dst = (uint16_t* restrict)sdl_screen->pixels
-				+ ((240 - internal_width) / 4) * sizeof(uint16_t)
+				+ ((320 - internal_width) / 4) * sizeof(uint16_t)
 				+ ((180 - internal_height) / 2) * pitch;
 			for (y = 0; y < internal_height; y++)
 			{
