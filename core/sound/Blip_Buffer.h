@@ -98,7 +98,7 @@ blip_resampled_time_t Blip_Buffer_clock_rate_factor(Blip_Buffer* bbuf,
       long clock_rate);
 
 
-#define BLIP_BUFFER_ACCURACY 8
+#define BLIP_BUFFER_ACCURACY 12
 #define BLIP_PHASE_BITS 6
 
 // Number of bits in resample ratio fraction. Higher values give a more accurate ratio
