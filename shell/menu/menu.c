@@ -74,10 +74,10 @@ static void config_load()
 	else
 	{
 		/* Default mapping for Horizontal */
-		option.config_buttons[0][0] = 273;
-		option.config_buttons[0][1] = 275;
-		option.config_buttons[0][2] = 274;
-		option.config_buttons[0][3] = 276;
+		option.config_buttons[0][0] = 273; //up
+		option.config_buttons[0][1] = 275; //right
+		option.config_buttons[0][2] = 274; //down
+		option.config_buttons[0][3] = 276; //left
 		
 		option.config_buttons[0][4] = 0;
 		option.config_buttons[0][5] = 0;
@@ -85,10 +85,10 @@ static void config_load()
 		option.config_buttons[0][7] = 0;
 		
 		option.config_buttons[0][8] = 1;
-		option.config_buttons[0][9] = 13;
+		option.config_buttons[0][9] = 282;
 				
-		option.config_buttons[0][10] = 306;
-		option.config_buttons[0][11] = 308;
+		option.config_buttons[0][10] = 268;
+		option.config_buttons[0][11] = 303;
 		
 		/* Default mapping for Vertical mode */
 		option.config_buttons[1][0] = 306;
@@ -239,7 +239,7 @@ static void Input_Remapping()
 						}
                         break;
                     case SDLK_LCTRL:
-                    case SDLK_RETURN:
+                    case SDLK_F1:
                         pressed = 1;
 					break;
                     case SDLK_ESCAPE:
@@ -483,7 +483,7 @@ void Menu()
 						currentselection = 1;
 						break;
                     case SDLK_LCTRL:
-                    case SDLK_RETURN:
+                    case SDLK_F1:
                         pressed = 1;
                         break;
                     case SDLK_LEFT:
