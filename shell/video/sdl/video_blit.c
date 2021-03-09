@@ -77,17 +77,17 @@ void Set_Video_InGame()
 {
 	switch(option.fullscreen) 
 	{
-		// Native
-		//#ifdef SUPPORT_NATIVE_RESOLUTION
-        case 0:
-			/* For drawing to Wonderswan screen */
-			if (sdl_screen->w != INTERNAL_WSWAN_WIDTH) sdl_screen = SDL_SetVideoMode(224, 144, 16, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
-			Draw_to_Virtual_Screen = sdl_screen->pixels;
-			width_of_surface = sdl_screen->w;
-        break;
-        //#endif
+		// // Native
+		// //#ifdef SUPPORT_NATIVE_RESOLUTION
+        // case 0:
+			// /* For drawing to Wonderswan screen */
+			// if (sdl_screen->w != INTERNAL_WSWAN_WIDTH) sdl_screen = SDL_SetVideoMode(224, 144, 16, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
+			// Draw_to_Virtual_Screen = sdl_screen->pixels;
+			// width_of_surface = sdl_screen->w;
+        // break;
+        // //#endif
         default:
-			if (sdl_screen->w != HOST_WIDTH_RESOLUTION) sdl_screen = SDL_SetVideoMode(HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 16, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
+			sdl_screen = SDL_SetVideoMode(240, 180, 16, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
 			Draw_to_Virtual_Screen = wswan_vs->pixels;
 			width_of_surface = INTERNAL_WSWAN_WIDTH;
         break;
@@ -162,7 +162,23 @@ void Update_Video_Ingame()
 			bitmap_scale(0, 0, internal_width, internal_height, HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, internal_width, 0, (uint16_t* restrict)source_graph, (uint16_t* restrict)sdl_screen->pixels);
 		break;
 		case 1:
-			bitmap_scale(0,0,internal_width,internal_height,keep_aspect_width,keep_aspect_height,internal_width, HOST_WIDTH_RESOLUTION - keep_aspect_width,(uint16_t* restrict)source_graph,(uint16_t* restrict)sdl_screen->pixels+(HOST_WIDTH_RESOLUTION-keep_aspect_width)/2+(HOST_HEIGHT_RESOLUTION-keep_aspect_height)/2*HOST_WIDTH_RESOLUTION);
+			//bitmap_scale(0,0,internal_width,internal_height,keep_aspect_width,keep_aspect_height,internal_width, HOST_WIDTH_RESOLUTION - keep_aspect_width,(uint16_t* restrict)source_graph,(uint16_t* restrict)sdl_screen->pixels+(HOST_WIDTH_RESOLUTION-keep_aspect_width)/2+(HOST_HEIGHT_RESOLUTION-keep_aspect_height)/2*HOST_WIDTH_RESOLUTION);
+		    //bitmap_scale(0, 0, internal_width, internal_height, 240, 180, internal_width, 0, (uint16_t* restrict)source_graph, (uint16_t* restrict)sdl_screen->pixels);
+		    
+			
+			pitch = 240;
+			src = (uint16_t* restrict)source_graph;
+			dst = (uint16_t* restrict)sdl_screen->pixels
+				+ ((240 - internal_width) / 4) * sizeof(uint16_t)
+				+ ((180 - internal_height) / 2) * pitch;
+			for (y = 0; y < internal_height; y++)
+			{
+				memmove(dst, src, internal_width * sizeof(uint16_t));
+				src += internal_width;
+				dst += pitch;
+			}
+			
+			
 		break;
 		// Hqx
 		case 2:
