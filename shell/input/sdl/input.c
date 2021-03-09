@@ -78,7 +78,7 @@ int32_t update_input(void)
 					case SDLK_DOWN:
 					case SDLK_KP_MULTIPLY:
 					case SDLK_RSHIFT:
-					     homecheck--;
+					     homecheck=0;
 					break;
 					default:
 					break;

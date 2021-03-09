@@ -16,7 +16,7 @@
 #include "menu.h"
 
 t_config option;
-uint32_t emulator_state = 0;
+uint32_t emulator_state = 1;
 
 static char home_path[256], save_path[256], eeprom_path[256], conf_path[256];
 static uint32_t controls_chosen = 0;
