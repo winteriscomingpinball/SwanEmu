@@ -169,10 +169,10 @@ void Update_Video_Ingame()
 			
 			pitch = 320;
 			src = (uint16_t* restrict)source_graph;
-			dst = (uint16_t* restrict)sdl_screen->pixels;
-			//dst = (uint16_t* restrict)sdl_screen->pixels
-				//+ ((320 - internal_width) / 4) * sizeof(uint16_t)
-				//+ ((180 - internal_height) / 2) * pitch;
+			//dst = (uint16_t* restrict)sdl_screen->pixels;
+			dst = (uint16_t* restrict)sdl_screen->pixels
+				+ ((320 - 0) / 4) * sizeof(uint16_t)
+				+ ((180 - 0) / 2) * pitch;
 			for (y = 0; y < internal_height; y++)
 			{
 				memmove(dst, src, internal_width * sizeof(uint16_t));
