@@ -14,6 +14,8 @@ int32_t axis_input[4] = {0, 0, 0, 0};
 uint32_t axis_rotate[4] = {0, 1, 2, 3};
 #endif
 
+char homecheck=0;
+
 int32_t update_input(void)
 {
 	SDL_Event event;
@@ -53,6 +55,15 @@ int32_t update_input(void)
 					case SDLK_RCTRL:
 						emulator_state = 1;
 					break;
+					
+					case SDLK_F1:
+					case SDLK_DOWN:
+					case SDLK_KP_MULTIPLY:
+					case SDLK_RSHIFT:
+					     homecheck++;
+					break;
+					
+					
 					default:
 					break;
 				}
@@ -62,6 +73,12 @@ int32_t update_input(void)
 				{
 					case SDLK_HOME:
 						emulator_state = 1;
+					break;
+					case SDLK_F1:
+					case SDLK_DOWN:
+					case SDLK_KP_MULTIPLY:
+					case SDLK_RSHIFT:
+					     homecheck--;
 					break;
 					default:
 					break;
@@ -74,6 +91,9 @@ int32_t update_input(void)
 			break;
 			#endif
 		}
+	}
+	if (homecheck==4){
+		emulator_state = 1;
 	}
 	
 	#ifdef GKD350H
