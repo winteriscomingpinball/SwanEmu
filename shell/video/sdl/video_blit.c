@@ -128,10 +128,10 @@ static void rotate_90_ccw(uint16_t* restrict dst, uint16_t* restrict src)
 
 void Update_Video_Ingame()
 {
-#ifndef SUPPORT_NATIVE_RESOLUTION
+//#ifndef SUPPORT_NATIVE_RESOLUTION
 	uint32_t y, pitch;
 	uint16_t *src, *dst;
-#endif
+//#endif
 	uint32_t internal_width, internal_height, keep_aspect_width, keep_aspect_height;
 	uint16_t* restrict source_graph;
 
@@ -162,6 +162,7 @@ void Update_Video_Ingame()
 			bitmap_scale(0, 0, internal_width, internal_height, HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, internal_width, 0, (uint16_t* restrict)source_graph, (uint16_t* restrict)sdl_screen->pixels);
 		break;
 		case 1:
+		{
 			//bitmap_scale(0,0,internal_width,internal_height,keep_aspect_width,keep_aspect_height,internal_width, HOST_WIDTH_RESOLUTION - keep_aspect_width,(uint16_t* restrict)source_graph,(uint16_t* restrict)sdl_screen->pixels+(HOST_WIDTH_RESOLUTION-keep_aspect_width)/2+(HOST_HEIGHT_RESOLUTION-keep_aspect_height)/2*HOST_WIDTH_RESOLUTION);
 		    //bitmap_scale(0, 0, internal_width, internal_height, 240, 180, internal_width, 0, (uint16_t* restrict)source_graph, (uint16_t* restrict)sdl_screen->pixels);
 		    
@@ -180,6 +181,7 @@ void Update_Video_Ingame()
 			
 			
 		break;
+		}
 		// Hqx
 		case 2:
 		break;
