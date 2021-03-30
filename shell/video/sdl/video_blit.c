@@ -53,7 +53,7 @@ void Init_Video()
 	
 	SDL_ShowCursor(0);
 	
-	sdl_screen = SDL_SetVideoMode(HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 16, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
+	sdl_screen = SDL_SetVideoMode(HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 32, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
 	
 	backbuffer = SDL_CreateRGBSurface(SDL_HWSURFACE, HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 16, 0,0,0,0);
 	
@@ -69,7 +69,7 @@ void Set_Video_Menu()
 	if (sdl_screen->w != HOST_WIDTH_RESOLUTION)
 	{
 		memcpy(wswan_vs->pixels, sdl_screen->pixels, (INTERNAL_WSWAN_WIDTH * INTERNAL_WSWAN_HEIGHT)*2);
-		sdl_screen = SDL_SetVideoMode(HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 16, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
+		sdl_screen = SDL_SetVideoMode(HOST_WIDTH_RESOLUTION, HOST_HEIGHT_RESOLUTION, 32, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
 	}
 }
 
@@ -87,7 +87,7 @@ void Set_Video_InGame()
         // break;
         // //#endif
         default:
-			sdl_screen = SDL_SetVideoMode(240, 180, 16, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
+			sdl_screen = SDL_SetVideoMode(240, 180, 32, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
 			Draw_to_Virtual_Screen = wswan_vs->pixels;
 			width_of_surface = INTERNAL_WSWAN_WIDTH;
         break;
@@ -167,18 +167,22 @@ void Update_Video_Ingame()
 		    //bitmap_scale(0, 0, internal_width, internal_height, 240, 180, internal_width, 0, (uint16_t* restrict)source_graph, (uint16_t* restrict)sdl_screen->pixels);
 		    
 			
-			pitch = 320;
-			src = (uint16_t* restrict)source_graph;
-			dst = (uint16_t* restrict)sdl_screen->pixels-(180*2);
+			//pitch = 320;
+			//src = (uint16_t* restrict)source_graph;
+			//dst = (uint16_t* restrict)sdl_screen->pixels-(180*2);
 			//dst = (uint16_t* restrict)sdl_screen->pixels
 				//+ ((320 - internal_width) / 4) * sizeof(uint16_t)
 				//+ ((180 - internal_height) / 2) * pitch;
-			for (y = 0; y < internal_height; y++)
-			{
-				memmove(dst, src, internal_width * sizeof(uint16_t));
-				src += internal_width;
-				dst += pitch;
-			}
+			//for (y = 0; y < internal_height; y++)
+			//{
+			//	memmove(dst, src, internal_width * sizeof(uint16_t));
+			//	src += internal_width;
+			//	dst += pitch;
+			//}
+			SDL_BlitSurface(wswan_vs,
+				    0,
+				    sdl_screen,
+				    0);
 			
 			
 		break;
