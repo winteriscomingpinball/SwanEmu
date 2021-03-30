@@ -193,9 +193,9 @@ void Update_Video_Ingame()
 			
 			
 			SDL_BlitSurface(wswan_vs,
-				    srcrect,
+				    &srcrect,
 				    sdl_screen,
-				    dstrect);
+				    &dstrect);
 			
 			
 		break;
