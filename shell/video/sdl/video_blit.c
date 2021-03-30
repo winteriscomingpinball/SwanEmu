@@ -191,7 +191,7 @@ void Update_Video_Ingame()
 			dstrect.w = INTERNAL_WSWAN_WIDTH;
 			dstrect.h = INTERNAL_WSWAN_HEIGHT;
 			
-			
+			SDL_UnlockSurface(sdl_screen);
 			SDL_BlitSurface(wswan_vs,
 				    &srcrect,
 				    sdl_screen,
