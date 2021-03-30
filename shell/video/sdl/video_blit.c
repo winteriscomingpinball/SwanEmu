@@ -66,11 +66,11 @@ void Init_Video()
 
 void Set_Video_Menu()
 {
-	if (sdl_screen->w != HOST_WIDTH_RESOLUTION)
-	{
-		memcpy(wswan_vs->pixels, sdl_screen->pixels, (INTERNAL_WSWAN_WIDTH * INTERNAL_WSWAN_HEIGHT)*2);
-		sdl_screen = SDL_SetVideoMode(INTERNAL_WSWAN_WIDTH, INTERNAL_WSWAN_HEIGHT, 32, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
-	}
+	//if (sdl_screen->w != HOST_WIDTH_RESOLUTION)
+	//{
+		//memcpy(wswan_vs->pixels, sdl_screen->pixels, (INTERNAL_WSWAN_WIDTH * INTERNAL_WSWAN_HEIGHT)*2);
+		sdl_screen = SDL_SetVideoMode(240, 180, 32, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
+	//}
 }
 
 void Set_Video_InGame()
