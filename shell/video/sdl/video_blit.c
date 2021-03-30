@@ -167,7 +167,7 @@ void Update_Video_Ingame()
 		    //bitmap_scale(0, 0, internal_width, internal_height, 240, 180, internal_width, 0, (uint16_t* restrict)source_graph, (uint16_t* restrict)sdl_screen->pixels);
 		    
 			
-			bitmap_scale(0, 0, internal_width, internal_height, 240, 180, internal_width, 0, (uint16_t* restrict)source_graph, (uint16_t* restrict)sdl_screen->pixels);
+			bitmap_scale(0, 0, internal_width, internal_height, 240, 180, internal_width, 320, (uint16_t* restrict)source_graph, (uint16_t* restrict)sdl_screen->pixels);
 			
 			//pitch = 320;
 			//src = (uint16_t* restrict)source_graph;
