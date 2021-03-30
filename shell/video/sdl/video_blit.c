@@ -87,7 +87,7 @@ void Set_Video_InGame()
         // break;
         // //#endif
         default:
-			sdl_screen = SDL_SetVideoMode(240, 180, 32, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
+			sdl_screen = SDL_SetVideoMode(INTERNAL_WSWAN_WIDTH, INTERNAL_WSWAN_HEIGHT, 32, SDL_HWSURFACE | SDL_FULLSCREEN | SDL_NOFRAME);
 			Draw_to_Virtual_Screen = wswan_vs->pixels;
 			width_of_surface = INTERNAL_WSWAN_WIDTH;
         break;
@@ -193,9 +193,9 @@ void Update_Video_Ingame()
 			
 			SDL_UnlockSurface(sdl_screen);
 			SDL_BlitSurface(wswan_vs,
-				    &srcrect,
+				    0,//&srcrect,
 				    sdl_screen,
-				    &dstrect);
+				    0);//&dstrect);
 			
 			
 		break;
