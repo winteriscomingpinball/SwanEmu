@@ -188,14 +188,14 @@ void Update_Video_Ingame()
 			srcrect.h = INTERNAL_WSWAN_HEIGHT;
 			dstrect.x = 0;
 			dstrect.y = 0;
-			dstrect.w = 0;
-			dstrect.h = INTERNAL_WSWAN_HEIGHT;
+			dstrect.w = 320;
+			dstrect.h = 200;
 			
 			SDL_UnlockSurface(sdl_screen);
 			SDL_BlitSurface(wswan_vs,
 				    &srcrect,
 				    sdl_screen,
-				    0);
+				    &dstrect);
 			
 			
 		break;
