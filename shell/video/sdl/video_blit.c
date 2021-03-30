@@ -167,35 +167,37 @@ void Update_Video_Ingame()
 		    //bitmap_scale(0, 0, internal_width, internal_height, 240, 180, internal_width, 0, (uint16_t* restrict)source_graph, (uint16_t* restrict)sdl_screen->pixels);
 		    
 			
-			//pitch = 320;
-			//src = (uint16_t* restrict)source_graph;
-			//dst = (uint16_t* restrict)sdl_screen->pixels-(180*2);
-			//dst = (uint16_t* restrict)sdl_screen->pixels
-				//+ ((320 - internal_width) / 4) * sizeof(uint16_t)
-				//+ ((180 - internal_height) / 2) * pitch;
-			//for (y = 0; y < internal_height; y++)
-			//{
-			//	memmove(dst, src, internal_width * sizeof(uint16_t));
-			//	src += internal_width;
-			//	dst += pitch;
-			//}
-			SDL_Rect srcrect;
-			SDL_Rect dstrect;
-
-			srcrect.x = 0;
-			srcrect.y = 0;
-			srcrect.w = INTERNAL_WSWAN_WIDTH;
-			srcrect.h = INTERNAL_WSWAN_HEIGHT;
-			dstrect.x = 0;
-			dstrect.y = 0;
-			dstrect.w = 320;
-			dstrect.h = 200;
+			pitch = 320;
+			src = (uint16_t* restrict)source_graph;
+			dst = (uint16_t* restrict)sdl_screen->pixels-(180*2);
+			dst = (uint16_t* restrict)sdl_screen->pixels
+				+ ((320 - internal_width) / 4) * sizeof(uint16_t)
+				+ ((180 - internal_height) / 2) * pitch;
+			for (y = 0; y < internal_height; y++)
+			{
+				memmove(dst, src, internal_width * sizeof(uint16_t));
+				src += internal_width;
+				dst += pitch;
+			}
 			
-			SDL_UnlockSurface(sdl_screen);
-			SDL_BlitSurface(wswan_vs,
-				    0,//&srcrect,
-				    sdl_screen,
-				    0);//&dstrect);
+			
+			//SDL_Rect srcrect;
+			//SDL_Rect dstrect;
+
+			//srcrect.x = 0;
+			//srcrect.y = 0;
+			//srcrect.w = INTERNAL_WSWAN_WIDTH;
+			//srcrect.h = INTERNAL_WSWAN_HEIGHT;
+			//dstrect.x = 0;
+			//dstrect.y = 0;
+			//dstrect.w = 320;
+			//dstrect.h = 200;
+			
+			//SDL_UnlockSurface(sdl_screen);
+			//SDL_BlitSurface(wswan_vs,
+			//	    0,//&srcrect,
+			//	    sdl_screen,
+			//	    0);//&dstrect);
 			
 			
 		break;
