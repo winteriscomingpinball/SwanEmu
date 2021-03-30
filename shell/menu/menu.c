@@ -277,8 +277,9 @@ static void Input_Remapping()
 					{
 						SDL_FillRect( backbuffer, NULL, 0 );
 						print_string("Please press button for mapping", TextWhite, TextBlue, 37, 108, backbuffer->pixels);
-						bitmap_scale(0,0,320,240,sdl_screen->w,sdl_screen->h,320,0,(uint16_t* restrict)backbuffer->pixels,(uint16_t* restrict)sdl_screen->pixels);
-						
+						//bitmap_scale(0,0,320,240,sdl_screen->w,sdl_screen->h,320,0,(uint16_t* restrict)backbuffer->pixels,(uint16_t* restrict)sdl_screen->pixels);
+						SDL_UnlockSurface(sdl_screen);
+						SDL_BlitSurface(backbuffer,0,sdl_screen,0);
 						while (SDL_PollEvent(&Event))
 						{
 							if (Event.type == SDL_KEYDOWN)
