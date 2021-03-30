@@ -179,10 +179,23 @@ void Update_Video_Ingame()
 			//	src += internal_width;
 			//	dst += pitch;
 			//}
+			SDL_Rect srcrect;
+			SDL_Rect dstrect;
+
+			srcrect.x = 0;
+			srcrect.y = 0;
+			srcrect.w = INTERNAL_WSWAN_WIDTH;
+			srcrect.h = INTERNAL_WSWAN_HEIGHT;
+			dstrect.x = 0;
+			dstrect.y = 0;
+			dstrect.w = INTERNAL_WSWAN_WIDTH;
+			dstrect.h = INTERNAL_WSWAN_HEIGHT;
+			
+			
 			SDL_BlitSurface(wswan_vs,
-				    0,
+				    srcrect,
 				    sdl_screen,
-				    0);
+				    dstrect);
 			
 			
 		break;
